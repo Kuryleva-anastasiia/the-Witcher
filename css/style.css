@@ -47,7 +47,7 @@ body {
   color: #ffffff;
 }
 
-.menu-link:hover {
+.menu-link:focus {
   animation: rotateIn;
   animation-duration: 0.8s;
 }
@@ -55,6 +55,10 @@ body {
 .social-link {
   margin-left: 21px;
   text-decoration: none;
+}
+
+.ham {
+  display: none;
 }
 
 .main-content {
@@ -339,62 +343,56 @@ footer {
     margin-bottom: 25px;
   }
 
-  .menu-button {
+  .ham {
     display: block;
     position: absolute;
-    top: 40px;
-    right: 35px;
-    width: 30px;
-    height: 2px;
-    background-color: #fff;
+    top: 25px;
+    right: 30px;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
-  .menu-button:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 2px;
-    background-color: #fff;
-    transition: transform 0.2s;
-    margin-top: -7px;
-  }
-
-  .menu-button:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 2px;
-    background-color: #fff;
-    transition: transform 0.2s;
-    border: none;
-    margin-top: 7px;
-  }
-
-  .menu-button-active {
-    height: 0;
-  }
-
-  .menu-button-active:before {
+  .hamRotate.active {
     transform: rotate(45deg);
-    margin-top: 0;
   }
 
-  .menu-button-active:after {
-    transform: rotate(-45deg);
-    margin-top: 0;
+  .hamRotate180.active {
+    transform: rotate(180deg);
+  }
+
+  .line {
+    fill: none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke: #fff;
+    stroke-width: 5.5;
+    stroke-linecap: round;
+  }
+
+  .ham1 .top {
+    stroke-dasharray: 40 139;
+  }
+
+  .ham1 .bottom {
+    stroke-dasharray: 40 180;
+  }
+
+  .ham1.active .top {
+    stroke-dashoffset: -98px;
+  }
+
+  .ham1.active .bottom {
+    stroke-dashoffset: -138px;
   }
 
   .header {
     display: none;
     position: absolute;
-    padding-top: 60px;
+    padding-top: 40px;
     margin-top: 0;
     right: 0;
     background-color: #9d2929;
